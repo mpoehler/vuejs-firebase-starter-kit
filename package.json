@@ -1,0 +1,31 @@
+{
+  "name": "vuejs-firebase-starter-kit",
+  "version": "1.0.0",
+  "description": "starter for vue projects hosted on firebase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "tsc --project ./functions && rm -rf ./public/* && concurrently --kill-others 'firebase serve' 'tsc --project ./functions --watch' 'cd frontend && ./node_modules/.bin/vue-cli-service build --no-clean --dest ../public --watch' 'sleep 15 && browser-sync start --proxy \"localhost:5000\" --files \"public/*\"'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpoehler/vuejs-firebase-starter-kit.git"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "typescript",
+    "firebase"
+  ],
+  "author": "Marco Pöhler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mpoehler/vuejs-firebase-starter-kit/issues"
+  },
+  "homepage": "https://github.com/mpoehler/vuejs-firebase-starter-kit#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.0",
+    "concurrently": "^4.0.1",
+    "typescript": "^3.1.1"
+  }
+}

@@ -1,0 +1,4 @@
+/functions/lib/
+/public/
+node_modules/
+.firebaserc
