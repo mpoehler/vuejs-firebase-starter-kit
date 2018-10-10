@@ -8,7 +8,10 @@ cache:
 
 deploy_production:
   stage: deploy
-  environment: Production
+  environment: 
+    - Production
+  only:
+    - master
   script:
     - npm install -g firebase-tools
     - npm install
@@ -19,3 +22,20 @@ deploy_production:
     - npm run build
     - cd ..
     - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_DEPLOY_KEY --project $FIREBASE_PROJECT_ID
+
+deploy_staging:
+  stage: deploy
+  environment: 
+    - Staging
+  only:
+    - develop
+  script:
+    - npm install -g firebase-tools
+    - npm install
+    - cd functions
+    - npm install
+    - cd ../frontend
+    - npm install
+    - npm run build
+    - cd ..
+    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_DEPLOY_KEY --project $FIREBASE_DEV_PROJECT_ID    
